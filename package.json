@@ -1,0 +1,23 @@
+{
+  "name": "glmapper",
+  "version": "0.0.0",
+  "description": "map data to webGL behavior",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "vows"
+  },
+  "keywords": [
+    "data",
+    "visualization",
+    "webgl"
+  ],
+  "author": "Erik Cunningham (@trinary)",
+  "license": "BSD",
+  "dependencies": {
+    "vows": "~0.7.0",
+    "smash": "0.0.11"
+  }
+}
