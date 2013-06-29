@@ -20,8 +20,12 @@ glmapper.scene = function(canvas) {
   }
   scene.compileShaders = function() { 
     console.log("compileShaders",scene_shaders);
-    scene_gl.compil 
+    scene_shaders.forEach(function(d,i,a) { scene_gl.compileShader(d); }
     return scene;
+  }
+  scene.addShaders = function() { 
+    return scene;:
+
   }
   return scene;
 };
