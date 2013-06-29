@@ -3,7 +3,9 @@ glmapper = function() {
 glmapper.scene = function(canvas) {
   var scene_context = canvas.context,
       scene_gl = canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ),
-      scene_shaders = [];
+      scene_shaders = [],
+      scene_program = scene_gl.createProgram();
+      
 
   function scene(d) {
      console.log("scened.", d); 
@@ -26,8 +28,13 @@ glmapper.scene = function(canvas) {
     return scene;
   }
   scene.addShaders = function() { 
-    return scene;:
-
+    scene_shaders.forEach(function(d,i,a) { scene_gl.attachShader(scene_program, d)});
+    return scene;
+  }
+  scene.link = function() { 
+    scene_gl.linkProgram( scene_program );
+    scene_gl.useProgram( scene_program );
+    return scene;
   }
   return scene;
 };
