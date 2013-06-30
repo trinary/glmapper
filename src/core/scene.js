@@ -30,7 +30,7 @@ glmapper.scene = function(canvas) {
     return scene;
   }
   scene.programShaders = function() { 
-    scene_shaders.forEach(function(d,i,a) { console.log(d); scene_gl.attachShader(scene_program, d); });
+    scene_shaders.forEach(function(d,i,a) { scene_gl.attachShader(scene_program, d); });
     return scene;
   }
   scene.link = function() { 
