@@ -12,27 +12,34 @@ glmapper.scene = function(canvas) {
   };
   scene.addVertexShader = function(sh) { 
     var shader = scene_gl.createShader(scene_gl.VERTEX_SHADER);
-    scene_gl.shaderSource(sh).textContent
+    scene_gl.shaderSource(shader, sh.textContent);
     scene_shaders.push(shader);
     return scene;
   }
   scene.addFragmentShader = function(sh) { 
     var shader = scene_gl.createShader(scene_gl.FRAGMENT_SHADER);
-    scene_gl.shaderSource(sh).textContent
+    scene_gl.shaderSource(shader, sh.textContent);
     scene_shaders.push(shader);
     return scene;
   }
   scene.compileShaders = function() { 
-    console.log("compileShaders",scene_shaders);
-    scene_shaders.forEach(function(d,i,a) { scene_gl.compileShader(d); }
+    scene_shaders.forEach(function(d,i,a) { 
+      scene_gl.compileShader(d); 
+      if (!scene_gl.getShaderParameter(d,scene_gl.COMPILE_STATUS)) {
+        throw gl.getShaderInfoLog( d );
+      }
+    });
     return scene;
   }
-  scene.addShaders = function() { 
-    scene_shaders.forEach(function(d,i,a) { scene_gl.attachShader(scene_program, d)});
+  scene.programShaders = function() { 
+    scene_shaders.forEach(function(d,i,a) { console.log(d); scene_gl.attachShader(scene_program, d); });
     return scene;
   }
   scene.link = function() { 
     scene_gl.linkProgram( scene_program );
+    if ( !scene_gl.getProgramParameter( scene_program, scene_gl.LINK_STATUS ) ) {
+      throw scene_gl.getProgramInfoLog( scene_program );
+    }
     scene_gl.useProgram( scene_program );
     return scene;
   }

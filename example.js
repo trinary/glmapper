@@ -1,4 +1,11 @@
 console.log(glmapper);
 
-var scene = glmapper.scene(document.getElementById("mapper")).addShader({foo: 2});
+
+var vs = document.getElementById('vs');
+var fs = document.getElementById('fs');
+
+console.log(vs.textContent,fs.textContent);
+
+var scene = glmapper.scene(document.getElementById("mapper")).addVertexShader(vs);
+scene.addFragmentShader(fs).programShaders().link();
 
