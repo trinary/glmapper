@@ -7,5 +7,6 @@ var fs = document.getElementById('fs');
 console.log(vs.textContent,fs.textContent);
 
 var scene = glmapper.scene(document.getElementById("mapper")).addVertexShader(vs);
-scene.addFragmentShader(fs).programShaders().link();
+scene.addFragmentShader(fs)
+scene.compileShaders().programShaders().link();
 

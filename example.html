@@ -7,31 +7,20 @@
     <canvas id="mapper"></canvas>
 
     <script id="vs" type="x-vert-shader">
-
-    // Attributes
     attribute vec3 aVertexPosition;
-
     void main() {
-
-        // Set the vertex position
-        gl_Position = vec4( aVertexPosition, 1.0 );
+      // Set the vertex position
+      gl_Position = vec4( aVertexPosition, 1.0 );
     }
-
     </script>
 
     <script id="fs" type="x-frag-shader">
-
     precision mediump float;
-
-    // Uniforms
     uniform vec4 uMaterialColor;
-
     void main() {
-
-        // Set the fragment color to the material color
-        gl_FragColor = uMaterialColor;
+      // Set the fragment color to the material color
+      gl_FragColor = uMaterialColor;
     }
-
     </script>
     <script src="glmapper.js" type="text/javascript"></script>
     <script src="example.js" type="text/javascript"></script>
