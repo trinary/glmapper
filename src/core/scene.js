@@ -8,7 +8,7 @@ glmapper.scene = function(canvas) {
 
 
   function scene(d) {
-     console.log("scened.", d);
+    console.log(scene_gl, scene_clearcolor, d);
   };
   scene.addVertexShader = function(sh) {
     var shader = scene_gl.createShader(scene_gl.VERTEX_SHADER);
@@ -43,7 +43,7 @@ glmapper.scene = function(canvas) {
     scene_gl.useProgram( scene_program );
     return scene;
   }
-  scene.clearColor = function(color) {
+  scene.clear = function(color) {
     if (!arguments.length) return scene_clearcolor;
     scene_clearcolor = color;
     scene_gl.clearColor(color[0],color[1], color[2],color[3]);
