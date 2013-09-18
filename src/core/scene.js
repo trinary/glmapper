@@ -6,9 +6,7 @@ glmapper.scene = function(canvas) {
       scene_enabled = [],
       scene_program = scene_gl.createProgram();
 
-
-  function scene(d) {
-    console.log(scene_gl, scene_clearcolor, d);
+  function scene() {
   };
   scene.addVertexShader = function(sh) {
     var shader = scene_gl.createShader(scene_gl.VERTEX_SHADER);
