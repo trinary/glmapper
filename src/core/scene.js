@@ -7,19 +7,19 @@ glmapper.scene = function(canvas) {
       scene_program = scene_gl.createProgram();
 
   function scene() {
-  };
+  }
   scene.addVertexShader = function(sh) {
     var shader = scene_gl.createShader(scene_gl.VERTEX_SHADER);
     scene_gl.shaderSource(shader, sh.textContent);
     scene_shaders.push(shader);
     return scene;
-  }
+  };
   scene.addFragmentShader = function(sh) {
     var shader = scene_gl.createShader(scene_gl.FRAGMENT_SHADER);
     scene_gl.shaderSource(shader, sh.textContent);
     scene_shaders.push(shader);
     return scene;
-  }
+  };
   scene.compileShaders = function() {
     scene_shaders.forEach(function(d,i,a) {
       scene_gl.compileShader(d);
@@ -28,11 +28,11 @@ glmapper.scene = function(canvas) {
       }
     });
     return scene;
-  }
+  };
   scene.programShaders = function() {
     scene_shaders.forEach(function(d,i,a) { scene_gl.attachShader(scene_program, d); });
     return scene;
-  }
+  };
   scene.link = function() {
     scene_gl.linkProgram( scene_program );
     if ( !scene_gl.getProgramParameter( scene_program, scene_gl.LINK_STATUS ) ) {
@@ -40,17 +40,17 @@ glmapper.scene = function(canvas) {
     }
     scene_gl.useProgram( scene_program );
     return scene;
-  }
+  };
   scene.clear = function(color) {
     if (!arguments.length) return scene_clearcolor;
     scene_clearcolor = color;
     scene_gl.clearColor(color[0],color[1], color[2],color[3]);
     return scene;
-  }
+  };
   scene.call = function(cb) {
     cb(scene_gl);
     return scene;
-  }
+  };
 
   return scene;
 };
